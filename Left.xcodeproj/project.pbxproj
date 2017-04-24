@@ -82,6 +82,7 @@
 		99A36E5A1EAD971200FCC291 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		99A36E5D1EAD971200FCC291 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		99A36E5F1EAD971200FCC291 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99A36E671EADA2C100FCC291 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +196,7 @@
 			children = (
 				99A36E591EAD971200FCC291 /* TodayViewController.h */,
 				99A36E5A1EAD971200FCC291 /* TodayViewController.m */,
+				99A36E671EADA2C100FCC291 /* Macro.h */,
 				99A36E5C1EAD971200FCC291 /* MainInterface.storyboard */,
 				99A36E5F1EAD971200FCC291 /* Info.plist */,
 			);
@@ -287,6 +289,7 @@
 				TargetAttributes = {
 					99A36E191EAD96C400FCC291 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = W6N382B5V9;
 						ProvisioningStyle = Automatic;
 					};
 					99A36E321EAD96C400FCC291 = {
@@ -540,7 +543,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W6N382B5V9;
 				INFOPLIST_FILE = Left/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzqiltw.daisy.Left;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -551,7 +556,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W6N382B5V9;
 				INFOPLIST_FILE = Left/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzqiltw.daisy.Left;
 				PRODUCT_NAME = "$(TARGET_NAME)";
