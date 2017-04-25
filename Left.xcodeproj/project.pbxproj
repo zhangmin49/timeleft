@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95082BF10974DC08B5B8076D /* libPods-LeftWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB72EBD7448CDE40D51FACF /* libPods-LeftWidget.a */; };
+		9952E7A71EAEE806005351B2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9952E7A51EAEE806005351B2 /* MainInterface.storyboard */; };
+		997BC6381EADCD8600C24BEE /* ZQTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */; };
 		99A36E1F1EAD96C400FCC291 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E1E1EAD96C400FCC291 /* main.m */; };
 		99A36E221EAD96C400FCC291 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E211EAD96C400FCC291 /* AppDelegate.m */; };
 		99A36E251EAD96C400FCC291 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E241EAD96C400FCC291 /* ViewController.m */; };
@@ -17,8 +20,8 @@
 		99A36E431EAD96C400FCC291 /* LeftUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E421EAD96C400FCC291 /* LeftUITests.m */; };
 		99A36E571EAD971200FCC291 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A36E561EAD971200FCC291 /* NotificationCenter.framework */; };
 		99A36E5B1EAD971200FCC291 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E5A1EAD971200FCC291 /* TodayViewController.m */; };
-		99A36E5E1EAD971200FCC291 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A36E5C1EAD971200FCC291 /* MainInterface.storyboard */; };
 		99A36E621EAD971200FCC291 /* LeftWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 99A36E541EAD971200FCC291 /* LeftWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		99A36E6A1EADC67E00FCC291 /* NSDate+ZQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E691EADC67E00FCC291 /* NSDate+ZQ.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C99196C62A6D07D992BF2EC /* Pods-LeftWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeftWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeftWidget/Pods-LeftWidget.release.xcconfig"; sourceTree = "<group>"; };
+		39DC967AE4F7AE9CAA1F2073 /* Pods-Left.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Left.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Left/Pods-Left.debug.xcconfig"; sourceTree = "<group>"; };
+		8B985417704C89061B2785F4 /* libPods-Left.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Left.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9952E7A11EAEE4A1005351B2 /* libPods-Left.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Left.a"; path = "../../../Library/Developer/Xcode/DerivedData/Left-dasrazrfjlzxaabstlbyltinpawl/Build/Products/Debug-iphonesimulator/libPods-Left.a"; sourceTree = "<group>"; };
+		9952E7A31EAEE4AA005351B2 /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMasonry.a; path = "../../../Library/Developer/Xcode/DerivedData/Left-dasrazrfjlzxaabstlbyltinpawl/Build/Products/Debug-iphonesimulator/Masonry/libMasonry.a"; sourceTree = "<group>"; };
+		9952E7A61EAEE806005351B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		997BC6361EADCD8600C24BEE /* ZQTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQTimeTableViewCell.h; sourceTree = "<group>"; };
+		997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQTimeTableViewCell.m; sourceTree = "<group>"; };
 		99A36E1A1EAD96C400FCC291 /* Left.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A36E1E1EAD96C400FCC291 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		99A36E201EAD96C400FCC291 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,9 +91,13 @@
 		99A36E561EAD971200FCC291 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		99A36E591EAD971200FCC291 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		99A36E5A1EAD971200FCC291 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		99A36E5D1EAD971200FCC291 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		99A36E5F1EAD971200FCC291 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A36E671EADA2C100FCC291 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		99A36E681EADC67E00FCC291 /* NSDate+ZQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZQ.h"; sourceTree = "<group>"; };
+		99A36E691EADC67E00FCC291 /* NSDate+ZQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZQ.m"; sourceTree = "<group>"; };
+		9DBCE915834E0D97CA19B5E3 /* Pods-Left.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Left.release.xcconfig"; path = "Pods/Target Support Files/Pods-Left/Pods-Left.release.xcconfig"; sourceTree = "<group>"; };
+		DBB72EBD7448CDE40D51FACF /* libPods-LeftWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LeftWidget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1C61BB26A4AF66CB4DCE75F /* Pods-LeftWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeftWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeftWidget/Pods-LeftWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A36E571EAD971200FCC291 /* NotificationCenter.framework in Frameworks */,
+				95082BF10974DC08B5B8076D /* libPods-LeftWidget.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +143,7 @@
 				99A36E581EAD971200FCC291 /* LeftWidget */,
 				99A36E551EAD971200FCC291 /* Frameworks */,
 				99A36E1B1EAD96C400FCC291 /* Products */,
+				F49D875D26F6AF43851564A8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,7 +203,11 @@
 		99A36E551EAD971200FCC291 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9952E7A31EAEE4AA005351B2 /* libMasonry.a */,
+				9952E7A11EAEE4A1005351B2 /* libPods-Left.a */,
 				99A36E561EAD971200FCC291 /* NotificationCenter.framework */,
+				8B985417704C89061B2785F4 /* libPods-Left.a */,
+				DBB72EBD7448CDE40D51FACF /* libPods-LeftWidget.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,11 +217,26 @@
 			children = (
 				99A36E591EAD971200FCC291 /* TodayViewController.h */,
 				99A36E5A1EAD971200FCC291 /* TodayViewController.m */,
+				99A36E681EADC67E00FCC291 /* NSDate+ZQ.h */,
+				99A36E691EADC67E00FCC291 /* NSDate+ZQ.m */,
+				997BC6361EADCD8600C24BEE /* ZQTimeTableViewCell.h */,
+				997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */,
 				99A36E671EADA2C100FCC291 /* Macro.h */,
-				99A36E5C1EAD971200FCC291 /* MainInterface.storyboard */,
 				99A36E5F1EAD971200FCC291 /* Info.plist */,
+				9952E7A51EAEE806005351B2 /* MainInterface.storyboard */,
 			);
 			path = LeftWidget;
+			sourceTree = "<group>";
+		};
+		F49D875D26F6AF43851564A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				39DC967AE4F7AE9CAA1F2073 /* Pods-Left.debug.xcconfig */,
+				9DBCE915834E0D97CA19B5E3 /* Pods-Left.release.xcconfig */,
+				E1C61BB26A4AF66CB4DCE75F /* Pods-LeftWidget.debug.xcconfig */,
+				0C99196C62A6D07D992BF2EC /* Pods-LeftWidget.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +301,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99A36E631EAD971200FCC291 /* Build configuration list for PBXNativeTarget "LeftWidget" */;
 			buildPhases = (
+				7B631A06BD5123D0F42C512A /* [CP] Check Pods Manifest.lock */,
 				99A36E501EAD971200FCC291 /* Sources */,
 				99A36E511EAD971200FCC291 /* Frameworks */,
 				99A36E521EAD971200FCC291 /* Resources */,
+				0C8347E6F6E3504D9175B985 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,6 +342,7 @@
 					};
 					99A36E531EAD971200FCC291 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = W6N382B5V9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -358,11 +397,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99A36E5E1EAD971200FCC291 /* MainInterface.storyboard in Resources */,
+				9952E7A71EAEE806005351B2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C8347E6F6E3504D9175B985 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeftWidget/Pods-LeftWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B631A06BD5123D0F42C512A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99A36E161EAD96C400FCC291 /* Sources */ = {
@@ -395,7 +467,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997BC6381EADCD8600C24BEE /* ZQTimeTableViewCell.m in Sources */,
 				99A36E5B1EAD971200FCC291 /* TodayViewController.m in Sources */,
+				99A36E6A1EADC67E00FCC291 /* NSDate+ZQ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +494,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9952E7A51EAEE806005351B2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9952E7A61EAEE806005351B2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		99A36E261EAD96C400FCC291 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,14 +516,6 @@
 				99A36E2C1EAD96C400FCC291 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		99A36E5C1EAD971200FCC291 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				99A36E5D1EAD971200FCC291 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -613,7 +687,9 @@
 		};
 		99A36E641EAD971200FCC291 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1C61BB26A4AF66CB4DCE75F /* Pods-LeftWidget.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = W6N382B5V9;
 				INFOPLIST_FILE = LeftWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzqiltw.daisy.Left.LeftWidget;
@@ -624,7 +700,9 @@
 		};
 		99A36E651EAD971200FCC291 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C99196C62A6D07D992BF2EC /* Pods-LeftWidget.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = W6N382B5V9;
 				INFOPLIST_FILE = LeftWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzqiltw.daisy.Left.LeftWidget;
@@ -652,6 +730,7 @@
 				99A36E491EAD96C400FCC291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		99A36E4A1EAD96C400FCC291 /* Build configuration list for PBXNativeTarget "LeftTests" */ = {
 			isa = XCConfigurationList;
@@ -660,6 +739,7 @@
 				99A36E4C1EAD96C400FCC291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		99A36E4D1EAD96C400FCC291 /* Build configuration list for PBXNativeTarget "LeftUITests" */ = {
 			isa = XCConfigurationList;
@@ -668,6 +748,7 @@
 				99A36E4F1EAD96C400FCC291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		99A36E631EAD971200FCC291 /* Build configuration list for PBXNativeTarget "LeftWidget" */ = {
 			isa = XCConfigurationList;
@@ -676,6 +757,7 @@
 				99A36E651EAD971200FCC291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

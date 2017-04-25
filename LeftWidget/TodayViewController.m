@@ -11,14 +11,15 @@
 
 #import <EventKit/EventKit.h>
 #import "Macro.h"
+#import "NSDate+ZQ.h"
+#import "ZQTimeTableViewCell.h"
+#import <Masonry/Masonry.h>
 
-@interface TodayViewController () <NCWidgetProviding>
+@interface TodayViewController () <NCWidgetProviding, UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *hintLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (nonatomic, strong) EKEventStore *store;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray<EKEvent *> *events;
 
 @end
 
@@ -31,27 +32,64 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchRecentEvent];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = [ZQTimeTableViewCell defaultHeight]; // 设置为一个接近“平均”行高的值
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+    
+    [self.tableView registerClass:ZQTimeTableViewCell.class forCellReuseIdentifier:NSStringFromClass(ZQTimeTableViewCell.class)];
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
     
     @weakify(self);
     [self.store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
         @strongify(self);
         if (granted) { //授权是否成功
-            [[NSTimer scheduledTimerWithTimeInterval:60 repeats:YES block:^(NSTimer * _Nonnull timer) {
-                [self fetchRecentEvent];
-            }] fire];
+            //            [[NSTimer scheduledTimerWithTimeInterval:60 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self fetchRecentEvent];
+            //            }] fire];
         }
     }];
+    
+    [super viewWillAppear:animated];
+
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return MIN(self.events.count, 2);
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZQTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ZQTimeTableViewCell.class) forIndexPath:indexPath];
+    
+    cell.event = self.events[indexPath.row];
+    
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [ZQTimeTableViewCell defaultHeight];
+//    return UITableViewAutomaticDimension;
 }
 
 - (void)fetchRecentEvent
 {
-    NSArray<EKEvent *> *events = nil;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSDateComponents *twoDays = [[NSDateComponents alloc] init];
@@ -64,27 +102,26 @@
                                                       toDate:[NSDate date]
                                                      options:0];
     
-    events = [self requestForEventUtilDate:twoDayFromNow];
-    if (events.count == 0) {
+    self.events = [self requestForEventUtilDate:twoDayFromNow];
+    if (self.events.count == 0) {
         NSDate *oneHundredYearFromNow = [calendar dateByAddingComponents:oneHundredYear toDate:[NSDate date] options:0];
-        events = [self requestForEventUtilDate:oneHundredYearFromNow];
+        self.events = [self requestForEventUtilDate:oneHundredYearFromNow];
     }
-    
-    EKEvent *event = events.firstObject;
-    if (event) {
-        NSDate *startDate = event.startDate;
-        
-        self.dateLabel.text = event.title;
-        self.locationLabel.text = event.location;
-        self.timeLeftLabel.text = [NSString stringWithFormat:@"%ld", [self minutesWithStartDate:[NSDate date] endDate:startDate]];
-    }
+
+//    self.preferredContentSize = CGSizeMake(0, MIN(2, self.events.count) * [ZQTimeTableViewCell defaultHeight]);
+
+    [self.tableView reloadData];
+//    EKEvent *event = events.firstObject;
+//    if (event) {
+//        self.dateLabel.text = event.title;
+//        self.locationLabel.text = event.location;
+//        self.timeLeftLabel.text = [NSString stringWithFormat:@"还有 %@", [event.startDate leftTimeSinceNow]];
+//        self.startDateLabel.text = [event.startDate beautyLocalFormat];
+//        self.endDateLabel.text = [event.endDate beautyLocalFormat];
+//        
+//    }
 }
 
-- (NSInteger)minutesWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate
-{
-    NSTimeInterval seconds = [startDate timeIntervalSinceDate:endDate];
-    return seconds / 60;
-}
 
 - (NSArray<EKEvent *> *)requestForEventUtilDate:(NSDate *)date
 {
