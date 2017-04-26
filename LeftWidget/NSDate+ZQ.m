@@ -28,7 +28,7 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
     NSDateComponents *currentComponents = [calendar components:units fromDate:[NSDate date]];
 
     NSTimeInterval timeIntervalLeft = [self timeIntervalSinceDate:[NSDate date]];
-    if (timeIntervalLeft / 3600 < 24 && timeIntervalLeft / 3600 >= 1) { // 1天内
+    if (timeIntervalLeft / 3600 < 24 && timeIntervalLeft / 3600 >= 0) { // 1天内
         return [NSString stringWithFormat:@"%ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, components.minute - currentComponents.minute];
     }
     
@@ -94,8 +94,21 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
         }
         desc = [NSString stringWithFormat:@"星期%@", weekDay];
     }
+    NSDateComponents *finalEndDateComponents = [calendar components:units fromDate:finalEndDate];
+
+    NSInteger days = finalEndDateComponents.day - endComponents.day;
     
-    return [NSString stringWithFormat:@"%@ %@ %@-%@", [MZSharedDateFormatter(@"MM月dd日") stringFromDate:endDate], desc, [MZSharedDateFormatter(@"hh:mm") stringFromDate:endDate], [MZSharedDateFormatter(@"hh:mm") stringFromDate:finalEndDate]];
+    NSString *plusDay = @"";
+    
+    if (finalEndDateComponents.month > endComponents.month || finalEndDateComponents.year > endComponents.year) {
+        plusDay = [MZSharedDateFormatter(@"(MM月dd日)") stringFromDate:finalEndDate];
+    } else {
+        if (days > 0) { // 如果超过一个月这里不准,有bug
+            plusDay = [NSString stringWithFormat:@"(+%ld)", days];
+        }
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@ %@-%@%@", [MZSharedDateFormatter(@"MM月dd日") stringFromDate:endDate], desc, [MZSharedDateFormatter(@"hh:mm") stringFromDate:endDate], [MZSharedDateFormatter(@"hh:mm") stringFromDate:finalEndDate], plusDay];
 }
 
 @end

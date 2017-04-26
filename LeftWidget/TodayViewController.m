@@ -32,26 +32,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.preferredContentSize = CGSizeMake(0, 200);
+#ifdef __IPHONE_10_0 //因为是iOS10才有的，还请记得适配
+    //如果需要折叠
+    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+#endif
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = [ZQTimeTableViewCell defaultHeight]; // 设置为一个接近“平均”行高的值
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+//    self.tableView.estimatedRowHeight = [ZQTimeTableViewCell defaultHeight]; // 设置为一个接近“平均”行高的值
     [self.view addSubview:self.tableView];
-    
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.offset(0);
-    }];
-    
     [self.tableView registerClass:ZQTimeTableViewCell.class forCellReuseIdentifier:NSStringFromClass(ZQTimeTableViewCell.class)];
     
-
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
     
     @weakify(self);
     [self.store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
@@ -63,8 +58,22 @@
         }
     }];
     
-    [super viewWillAppear:animated];
+}
 
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
+{
+    if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
+        self.preferredContentSize = CGSizeMake(0, MIN(self.events.count, 2) * [ZQTimeTableViewCell defaultHeight]);
+    } else {
+        self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    [super viewWillAppear:animated];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -77,7 +86,6 @@
     ZQTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ZQTimeTableViewCell.class) forIndexPath:indexPath];
     
     cell.event = self.events[indexPath.row];
-    
     
     return cell;
 }
@@ -108,9 +116,13 @@
         self.events = [self requestForEventUtilDate:oneHundredYearFromNow];
     }
 
-//    self.preferredContentSize = CGSizeMake(0, MIN(2, self.events.count) * [ZQTimeTableViewCell defaultHeight]);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        
+        self.preferredContentSize = self.tableView.contentSize;
+    });
 
-    [self.tableView reloadData];
+
 //    EKEvent *event = events.firstObject;
 //    if (event) {
 //        self.dateLabel.text = event.title;
@@ -149,6 +161,17 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
+    @weakify(self);
+    [self.store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+        @strongify(self);
+        if (granted) { //授权是否成功
+            //            [[NSTimer scheduledTimerWithTimeInterval:60 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self fetchRecentEvent];
+            //            }] fire];
+        }
+    }];
+    
+    
     completionHandler(NCUpdateResultNewData);
 }
 

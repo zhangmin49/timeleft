@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		95082BF10974DC08B5B8076D /* libPods-LeftWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB72EBD7448CDE40D51FACF /* libPods-LeftWidget.a */; };
-		9952E7A71EAEE806005351B2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9952E7A51EAEE806005351B2 /* MainInterface.storyboard */; };
 		997BC6381EADCD8600C24BEE /* ZQTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */; };
 		99A36E1F1EAD96C400FCC291 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E1E1EAD96C400FCC291 /* main.m */; };
 		99A36E221EAD96C400FCC291 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E211EAD96C400FCC291 /* AppDelegate.m */; };
@@ -68,7 +67,6 @@
 		8B985417704C89061B2785F4 /* libPods-Left.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Left.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9952E7A11EAEE4A1005351B2 /* libPods-Left.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Left.a"; path = "../../../Library/Developer/Xcode/DerivedData/Left-dasrazrfjlzxaabstlbyltinpawl/Build/Products/Debug-iphonesimulator/libPods-Left.a"; sourceTree = "<group>"; };
 		9952E7A31EAEE4AA005351B2 /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMasonry.a; path = "../../../Library/Developer/Xcode/DerivedData/Left-dasrazrfjlzxaabstlbyltinpawl/Build/Products/Debug-iphonesimulator/Masonry/libMasonry.a"; sourceTree = "<group>"; };
-		9952E7A61EAEE806005351B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		997BC6361EADCD8600C24BEE /* ZQTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQTimeTableViewCell.h; sourceTree = "<group>"; };
 		997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQTimeTableViewCell.m; sourceTree = "<group>"; };
 		99A36E1A1EAD96C400FCC291 /* Left.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,7 +221,6 @@
 				997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */,
 				99A36E671EADA2C100FCC291 /* Macro.h */,
 				99A36E5F1EAD971200FCC291 /* Info.plist */,
-				9952E7A51EAEE806005351B2 /* MainInterface.storyboard */,
 			);
 			path = LeftWidget;
 			sourceTree = "<group>";
@@ -397,7 +394,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9952E7A71EAEE806005351B2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,14 +490,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9952E7A51EAEE806005351B2 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9952E7A61EAEE806005351B2 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
 		99A36E261EAD96C400FCC291 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
