@@ -63,7 +63,7 @@
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
 {
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
-        self.preferredContentSize = CGSizeMake(0, MIN(self.events.count, 2) * [ZQTimeTableViewCell defaultHeight]);
+        self.preferredContentSize = self.tableView.contentSize;
     } else {
         self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
     }
@@ -78,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return MIN(self.events.count, 2);
+    return self.events.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

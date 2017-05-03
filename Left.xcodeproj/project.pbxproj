@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		95082BF10974DC08B5B8076D /* libPods-LeftWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB72EBD7448CDE40D51FACF /* libPods-LeftWidget.a */; };
+		9959B01E1EB9CA7400AD292A /* HYCuFangSongJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9959B01C1EB9CA7400AD292A /* HYCuFangSongJ.ttf */; };
+		9959B01F1EB9CA7400AD292A /* HYCuFangSongJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9959B01C1EB9CA7400AD292A /* HYCuFangSongJ.ttf */; };
+		9959B0201EB9CA7400AD292A /* HYFangSongJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9959B01D1EB9CA7400AD292A /* HYFangSongJ.ttf */; };
+		9959B0211EB9CA7400AD292A /* HYFangSongJ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9959B01D1EB9CA7400AD292A /* HYFangSongJ.ttf */; };
+		9959B0241EB9CA8300AD292A /* UIFont+ZQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959B0231EB9CA8300AD292A /* UIFont+ZQ.m */; };
+		9959B0251EB9CA8300AD292A /* UIFont+ZQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959B0231EB9CA8300AD292A /* UIFont+ZQ.m */; };
 		997BC6381EADCD8600C24BEE /* ZQTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */; };
 		99A36E1F1EAD96C400FCC291 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E1E1EAD96C400FCC291 /* main.m */; };
 		99A36E221EAD96C400FCC291 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A36E211EAD96C400FCC291 /* AppDelegate.m */; };
@@ -67,6 +73,10 @@
 		8B985417704C89061B2785F4 /* libPods-Left.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Left.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9952E7A11EAEE4A1005351B2 /* libPods-Left.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Left.a"; path = "../../../Library/Developer/Xcode/DerivedData/Left-dasrazrfjlzxaabstlbyltinpawl/Build/Products/Debug-iphonesimulator/libPods-Left.a"; sourceTree = "<group>"; };
 		9952E7A31EAEE4AA005351B2 /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMasonry.a; path = "../../../Library/Developer/Xcode/DerivedData/Left-dasrazrfjlzxaabstlbyltinpawl/Build/Products/Debug-iphonesimulator/Masonry/libMasonry.a"; sourceTree = "<group>"; };
+		9959B01C1EB9CA7400AD292A /* HYCuFangSongJ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYCuFangSongJ.ttf; sourceTree = "<group>"; };
+		9959B01D1EB9CA7400AD292A /* HYFangSongJ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYFangSongJ.ttf; sourceTree = "<group>"; };
+		9959B0221EB9CA8300AD292A /* UIFont+ZQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ZQ.h"; sourceTree = "<group>"; };
+		9959B0231EB9CA8300AD292A /* UIFont+ZQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ZQ.m"; sourceTree = "<group>"; };
 		997BC6361EADCD8600C24BEE /* ZQTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQTimeTableViewCell.h; sourceTree = "<group>"; };
 		997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQTimeTableViewCell.m; sourceTree = "<group>"; };
 		99A36E1A1EAD96C400FCC291 /* Left.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Left.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +185,8 @@
 		99A36E1D1EAD96C400FCC291 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9959B01C1EB9CA7400AD292A /* HYCuFangSongJ.ttf */,
+				9959B01D1EB9CA7400AD292A /* HYFangSongJ.ttf */,
 				99A36E1E1EAD96C400FCC291 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -219,6 +231,8 @@
 				99A36E691EADC67E00FCC291 /* NSDate+ZQ.m */,
 				997BC6361EADCD8600C24BEE /* ZQTimeTableViewCell.h */,
 				997BC6371EADCD8600C24BEE /* ZQTimeTableViewCell.m */,
+				9959B0221EB9CA8300AD292A /* UIFont+ZQ.h */,
+				9959B0231EB9CA8300AD292A /* UIFont+ZQ.m */,
 				99A36E671EADA2C100FCC291 /* Macro.h */,
 				99A36E5F1EAD971200FCC291 /* Info.plist */,
 			);
@@ -373,6 +387,8 @@
 				99A36E2D1EAD96C400FCC291 /* LaunchScreen.storyboard in Resources */,
 				99A36E2A1EAD96C400FCC291 /* Assets.xcassets in Resources */,
 				99A36E281EAD96C400FCC291 /* Main.storyboard in Resources */,
+				9959B0201EB9CA7400AD292A /* HYFangSongJ.ttf in Resources */,
+				9959B01E1EB9CA7400AD292A /* HYCuFangSongJ.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +410,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9959B01F1EB9CA7400AD292A /* HYCuFangSongJ.ttf in Resources */,
+				9959B0211EB9CA7400AD292A /* HYFangSongJ.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A36E251EAD96C400FCC291 /* ViewController.m in Sources */,
+				9959B0241EB9CA8300AD292A /* UIFont+ZQ.m in Sources */,
 				99A36E221EAD96C400FCC291 /* AppDelegate.m in Sources */,
 				99A36E1F1EAD96C400FCC291 /* main.m in Sources */,
 			);
@@ -464,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				997BC6381EADCD8600C24BEE /* ZQTimeTableViewCell.m in Sources */,
+				9959B0251EB9CA8300AD292A /* UIFont+ZQ.m in Sources */,
 				99A36E5B1EAD971200FCC291 /* TodayViewController.m in Sources */,
 				99A36E6A1EADC67E00FCC291 /* NSDate+ZQ.m in Sources */,
 			);
@@ -679,6 +699,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = W6N382B5V9;
 				INFOPLIST_FILE = LeftWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzqiltw.daisy.Left.LeftWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -692,6 +713,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = W6N382B5V9;
 				INFOPLIST_FILE = LeftWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzqiltw.daisy.Left.LeftWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
