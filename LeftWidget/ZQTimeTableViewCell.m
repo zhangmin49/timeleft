@@ -103,11 +103,11 @@
 
 - (void)mockDataForEvent:(EKEvent *)event
 {
-    event.title = @"哈哈";
-    event.startDate = [NSDate date];
-    event.location = @"location";
-    event.location = nil;
-    event.endDate = [NSDate dateWithTimeIntervalSinceNow:3600 * 25];
+//    event.title = @"哈哈";
+//    event.startDate = [NSDate date];
+//    event.location = @"location";
+//    event.location = nil;
+//    event.endDate = [NSDate dateWithTimeIntervalSinceNow:3600 * 25];
 }
 
 - (UIView *)colorView
