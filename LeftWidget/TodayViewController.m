@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.preferredContentSize = CGSizeMake(0, 200);
+    self.preferredContentSize = CGSizeMake(0, 300);
 #ifdef __IPHONE_10_0 //因为是iOS10才有的，还请记得适配
     //如果需要折叠
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
@@ -65,7 +65,7 @@
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
         self.preferredContentSize = self.tableView.contentSize;
     } else {
-        self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
+        self.preferredContentSize = CGSizeMake(0, 300);
     }
 }
 
@@ -113,7 +113,12 @@
     self.events = [self requestForEventUtilDate:twoDayFromNow];
     if (self.events.count == 0) {
         NSDate *oneHundredYearFromNow = [calendar dateByAddingComponents:oneHundredYear toDate:[NSDate date] options:0];
-        self.events = [self requestForEventUtilDate:oneHundredYearFromNow];
+        NSArray *events = [self requestForEventUtilDate:oneHundredYearFromNow];
+        NSMutableArray *tmp = [NSMutableArray array];
+        for (NSInteger i = 0; i < MIN(2, events.count); ++i) {
+            [tmp addObject:events[i]];
+        }
+        self.events = [tmp copy];
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -169,10 +174,11 @@
             [self fetchRecentEvent];
             //            }] fire];
         }
+        
+        completionHandler(NCUpdateResultNewData);
     }];
     
     
-    completionHandler(NCUpdateResultNewData);
 }
 
 

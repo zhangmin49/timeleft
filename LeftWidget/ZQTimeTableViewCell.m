@@ -18,6 +18,11 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *locationLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
+@property (nonatomic, strong) UILabel *timeZoneDurationLabel;
+
+//@property (nonatomic, strong) UIView *timezoneDurationView;
+
+@property (nonatomic, strong) UIView *timezoneView;
 
 @property (nonatomic, strong) UIStackView *stackView;
 
@@ -33,8 +38,6 @@
         [self stackView];
         
         [self layoutUI];
-        
-        
     }
     return self;
 }
@@ -48,7 +51,7 @@
 - (void)layoutUI
 {
     [self.colorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(15);
+        make.left.offset(20);
 //        make.top.offset(10);
         make.centerY.offset(0);
         make.width.equalTo(@3);
@@ -58,35 +61,9 @@
     
     [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.colorView);
-        make.left.equalTo(self.colorView.mas_right).offset(10);
+        make.left.equalTo(self.colorView.mas_right).offset(20);
         make.right.lessThanOrEqualTo(self).offset(-5);
     }];
-    
-    
-//    [self.leftTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.colorView.mas_right).offset(10);
-//        make.top.equalTo(self.colorView);
-//        make.right.lessThanOrEqualTo(self).offset(-5);
-//    }];
-//    
-//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.leftTimeLabel);
-//        make.top.equalTo(self.leftTimeLabel.mas_bottom).offset(5);
-//        make.right.lessThanOrEqualTo(self).offset(-5);
-//    }];
-//    
-//    [self.locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.leftTimeLabel);
-//        make.top.equalTo(self.titleLabel.mas_bottom).offset(5);
-//        make.right.lessThanOrEqualTo(self).offset(-5);
-//    }];
-//    
-//    [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.leftTimeLabel);
-//        make.top.equalTo(self.locationLabel.mas_bottom).offset(5);
-//        make.right.lessThanOrEqualTo(self).offset(-5);
-//        make.bottom.equalTo(self).offset(-10);
-//    }];
 }
 
 - (void)setEvent:(EKEvent *)event
@@ -98,7 +75,8 @@
     self.leftTimeLabel.text = [NSString stringWithFormat:@"还有 %@", [event.startDate leftTimeSinceNow]];
     self.titleLabel.text = event.title;
     self.locationLabel.text = event.location;
-    self.durationLabel.text = [[NSDate date] durationUntilEndDate:event.startDate finalEndDate:event.endDate currentTimeZone:event.timeZone endTimeZone:event.timeZone finalEndTimeZone:event.timeZone];
+    self.durationLabel.text = [[NSDate date] durationUntilEndDate:event.startDate finalEndDate:event.endDate];
+    self.timeZoneDurationLabel.text = [[NSDate date] durationUntilEndDate:event.startDate finalEndDate:event.endDate currentTimeZone:event.timeZone endTimeZone:event.timeZone finalEndTimeZone:event.timeZone];
 }
 
 - (void)mockDataForEvent:(EKEvent *)event
@@ -125,9 +103,9 @@
     if (!_leftTimeLabel) {
         _leftTimeLabel = [[UILabel alloc] init];
         
-        _leftTimeLabel.textColor = [UIColor whiteColor];
+        _leftTimeLabel.textColor = [UIColor blackColor];
         
-        _leftTimeLabel.font = [UIFont defaultFontWithSize:14];
+        _leftTimeLabel.font = [UIFont defaultFontWithSize:12];
         
 //        [self.contentView addSubview:_leftTimeLabel];
   
@@ -140,8 +118,8 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         
-        _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.font = [UIFont defaultFontWithSize:18];
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.font = [UIFont defaultFontWithSize:13];
         
 //        [self.contentView addSubview:_titleLabel];
     }
@@ -152,9 +130,9 @@
 {
     if (!_locationLabel) {
         _locationLabel = [[UILabel alloc] init];
-        _locationLabel.textColor = [UIColor whiteColor];
+        _locationLabel.textColor = [UIColor blackColor];
         
-        _locationLabel.font = [UIFont defaultFontWithSize:14];
+        _locationLabel.font = [UIFont defaultFontWithSize:10];
 
 //        [self.contentView addSubview:_locationLabel];
     }
@@ -166,12 +144,42 @@
     if (!_durationLabel) {
         _durationLabel = [[UILabel alloc] init];
         
-        _durationLabel.textColor = [UIColor whiteColor];
-        _durationLabel.font = [UIFont defaultFontWithSize:14];
+        _durationLabel.textColor = [UIColor blackColor];
+        _durationLabel.font = [UIFont defaultFontWithSize:10];
         
 //        [self.contentView addSubview:_durationLabel];
     }
     return _durationLabel;
+}
+
+- (UILabel *)timeZoneDurationLabel
+{
+    if (!_timeZoneDurationLabel) {
+        _timeZoneDurationLabel = [[UILabel alloc] init];
+        
+        _timeZoneDurationLabel.textColor = [UIColor blackColor];
+        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:10];
+        _timeZoneDurationLabel.numberOfLines = 0;
+        
+        [self.timezoneView addSubview:_timeZoneDurationLabel];
+        
+        [_timeZoneDurationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(0);
+            make.right.lessThanOrEqualTo(self.timezoneView.mas_right).offset(-5);
+            make.centerY.offset(0);
+        }];
+    }
+    return _timeZoneDurationLabel;
+}
+
+- (UIView *)timezoneView
+{
+    if (!_timezoneView) {
+        _timezoneView = [[UIView alloc] init];
+        
+        _timezoneView.backgroundColor = [UIColor clearColor];
+    }
+    return _timezoneView;
 }
 
 - (UIStackView *)stackView
@@ -181,7 +189,8 @@
         
         _stackView.alignment = UIStackViewAlignmentLeading;
         _stackView.axis = UILayoutConstraintAxisVertical;
-        _stackView.spacing = 5;
+//        _stackView.spacing = 2;
+        _stackView.distribution = UIStackViewDistributionFillEqually;
         
         [self.contentView addSubview:_stackView];
         
@@ -189,6 +198,8 @@
         [_stackView addArrangedSubview:self.titleLabel];
         [_stackView addArrangedSubview:self.locationLabel];
         [_stackView addArrangedSubview:self.durationLabel];
+        [_stackView addArrangedSubview:self.timezoneView];
+//        [_stackView addArrangedSubview:self.timeZoneDurationLabel];
         
     }
     return _stackView;

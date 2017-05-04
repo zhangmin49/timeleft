@@ -9,11 +9,15 @@
 #import "NSDate+ZQ.h"
 
 NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
-    static dispatch_once_t onceToken;
-    static NSDateFormatter *formatter = nil;
-    dispatch_once(&onceToken, ^{
-        formatter = [[NSDateFormatter alloc] init];
-    });
+//    static dispatch_once_t onceToken;
+//    static NSDateFormatter *formatter = nil;
+//    dispatch_once(&onceToken, ^{
+//        formatter = [[NSDateFormatter alloc] init];
+//    });
+//    formatter.dateFormat = dateFormat;
+//    return formatter;
+    // 为了让formatter变化，暂时不做单例
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = dateFormat;
     return formatter;
 }
@@ -48,7 +52,7 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
     return [MZSharedDateFormatter(@"yyyy年MM月dd日 hh:mm:ss") stringFromDate:self];
 }
 
-- (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate currentTimeZone:(NSTimeZone *)timeZone endTimeZone:(NSTimeZone *)endTimeZone finalEndTimeZone:(NSTimeZone *)finalEndTimeZone
+- (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger units = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitWeekday;
@@ -94,8 +98,9 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
         }
         desc = [NSString stringWithFormat:@"星期%@", weekDay];
     }
+    
     NSDateComponents *finalEndDateComponents = [calendar components:units fromDate:finalEndDate];
-
+    
     NSInteger days = finalEndDateComponents.day - endComponents.day;
     
     NSString *plusDay = @"";
@@ -107,8 +112,28 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
             plusDay = [NSString stringWithFormat:@"(+%ld)", days];
         }
     }
-    
     return [NSString stringWithFormat:@"%@ %@ %@-%@%@", [MZSharedDateFormatter(@"MM月dd日") stringFromDate:endDate], desc, [MZSharedDateFormatter(@"hh:mm") stringFromDate:endDate], [MZSharedDateFormatter(@"hh:mm") stringFromDate:finalEndDate], plusDay];
+}
+
+- (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate currentTimeZone:(NSTimeZone *)timeZone endTimeZone:(NSTimeZone *)endTimeZone finalEndTimeZone:(NSTimeZone *)finalEndTimeZone
+{
+    NSDateFormatter *localEndDateFormaterMD = MZSharedDateFormatter(@"MM月dd日");
+    localEndDateFormaterMD.timeZone = endTimeZone;
+    NSDateFormatter *localEndDateFormaterHM = MZSharedDateFormatter(@"hh:mm");
+    localEndDateFormaterHM.timeZone = endTimeZone;
+    NSDateFormatter *localFinalEndDateFormaterHM = MZSharedDateFormatter(@"hh:mm");
+    localFinalEndDateFormaterHM.timeZone = finalEndTimeZone;
+    NSDateFormatter *localFinalEndDateFormaterMD = MZSharedDateFormatter(@"MM月dd日");
+    localFinalEndDateFormaterMD.timeZone = finalEndTimeZone;
+//    NSString *localEndDateMD = [localEndDateFormaterMD stringFromDate:endDate];
+    NSString *localEndDateHM = [localEndDateFormaterHM stringFromDate:endDate];
+    NSString *localFinalDateHM = [localFinalEndDateFormaterHM stringFromDate:finalEndDate];
+//    NSString *localFinalDateMD = [localFinalEndDateFormaterMD stringFromDate:finalEndDate];
+    
+    NSString *localEndDateString = endTimeZone ? [NSString stringWithFormat:@"%@", localEndDateHM] : @"";
+    NSString *localFinalEndDateString = finalEndTimeZone ? [NSString stringWithFormat:@"%@", localFinalDateHM] : @"";
+    
+    return [NSString stringWithFormat:@"[%@]%@-[%@]%@", [endTimeZone name], localEndDateString, [finalEndTimeZone name], localFinalEndDateString];
 }
 
 @end

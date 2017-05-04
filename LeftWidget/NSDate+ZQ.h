@@ -11,5 +11,6 @@
 @interface NSDate (ZQ)
 - (NSString *)leftTimeSinceNow;
 - (NSString *)beautyLocalFormat;
+- (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate;
 - (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate currentTimeZone:(NSTimeZone *)timeZone endTimeZone:(NSTimeZone *)endTimeZone finalEndTimeZone:(NSTimeZone *)finalEndTimeZone;
 @end
