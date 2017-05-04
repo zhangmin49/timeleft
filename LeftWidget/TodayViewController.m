@@ -106,8 +106,11 @@
     NSDateComponents *oneHundredYear = [[NSDateComponents alloc] init];
     oneHundredYear.year = 100;
     
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    NSDate *twoHoursAgo = [NSDate dateWithTimeIntervalSince1970:(now - 7200 - 1)];
+    
     NSDate *twoDayFromNow = [calendar dateByAddingComponents:twoDays
-                                                      toDate:[NSDate date]
+                                                      toDate:twoHoursAgo
                                                      options:0];
     
     self.events = [self requestForEventUtilDate:twoDayFromNow];

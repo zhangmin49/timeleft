@@ -52,17 +52,17 @@
 {
     [self.colorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(20);
-//        make.top.offset(10);
+        make.top.offset(10);
         make.centerY.offset(0);
-        make.width.equalTo(@3);
-        make.bottom.equalTo(self.stackView.mas_bottom);
-//        make.bottom.offset(-5);
+        make.width.equalTo(@2);
+        make.bottom.offset(-10);
     }];
     
     [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.colorView);
-        make.left.equalTo(self.colorView.mas_right).offset(20);
+        make.left.equalTo(self.colorView.mas_right).offset(15);
         make.right.lessThanOrEqualTo(self).offset(-5);
+        make.bottom.equalTo(self.colorView);
     }];
 }
 
@@ -72,6 +72,7 @@
     
     _event = event;
     
+    self.colorView.backgroundColor = [UIColor colorWithCGColor:event.calendar.CGColor];
     self.leftTimeLabel.text = [NSString stringWithFormat:@"还有 %@", [event.startDate leftTimeSinceNow]];
     self.titleLabel.text = event.title;
     self.locationLabel.text = event.location;
@@ -81,18 +82,13 @@
 
 - (void)mockDataForEvent:(EKEvent *)event
 {
-//    event.title = @"哈哈";
-//    event.startDate = [NSDate date];
-//    event.location = @"location";
-//    event.location = nil;
-//    event.endDate = [NSDate dateWithTimeIntervalSinceNow:3600 * 25];
 }
 
 - (UIView *)colorView
 {
     if (!_colorView) {
         _colorView = [[UIView alloc] init];
-        _colorView.backgroundColor = [UIColor greenColor];
+        _colorView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:_colorView];
     }
     return _colorView;
