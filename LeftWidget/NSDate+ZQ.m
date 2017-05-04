@@ -32,12 +32,22 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
     NSDateComponents *currentComponents = [calendar components:units fromDate:[NSDate date]];
 
     NSTimeInterval timeIntervalLeft = [self timeIntervalSinceDate:[NSDate date]];
-    if (timeIntervalLeft / 3600 < 24 && timeIntervalLeft / 3600 >= 0) { // 1天内
-        return [NSString stringWithFormat:@"%ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, components.minute - currentComponents.minute];
+    if (timeIntervalLeft / 3600 < 24 && timeIntervalLeft / 3600 >= 0) { // 1天内 24小时内
+        if ((NSUInteger)timeIntervalLeft / 3600 == 0) {
+            return [NSString stringWithFormat:@"%ld分钟", (NSUInteger)timeIntervalLeft / 60];
+        }
+        return [NSString stringWithFormat:@"%ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, ((NSUInteger)timeIntervalLeft % 3600) / 60];
     }
     
     if (components.day - currentComponents.day > 1) { // xx天xx小时
-        return [NSString stringWithFormat:@"%ld天%ld小时", components.day - currentComponents.day, components.hour - currentComponents.hour];
+        NSInteger days = components.day - currentComponents.day;
+        
+        NSInteger hours = components.hour - currentComponents.hour;
+        if (hours < 0) {
+            hours += 24;
+            days --;
+        }
+        return [NSString stringWithFormat:@"%ld天%ld小时", days, hours];
     }
     
     if (components.minute - currentComponents.minute >= 1) {
