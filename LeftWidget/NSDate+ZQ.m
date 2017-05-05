@@ -34,9 +34,9 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
     NSTimeInterval timeIntervalLeft = [self timeIntervalSinceDate:[NSDate date]];
     if (timeIntervalLeft / 3600 < 24 && timeIntervalLeft / 3600 >= 0) { // 1天内 24小时内
         if ((NSUInteger)timeIntervalLeft / 3600 == 0) {
-            return [NSString stringWithFormat:@"%ld分钟", (NSUInteger)timeIntervalLeft / 60];
+            return [NSString stringWithFormat:@"还有 %ld分钟", (NSUInteger)timeIntervalLeft / 60];
         }
-        return [NSString stringWithFormat:@"%ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, ((NSUInteger)timeIntervalLeft % 3600) / 60];
+        return [NSString stringWithFormat:@"还有 %ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, ((NSUInteger)timeIntervalLeft % 3600) / 60];
     }
     
     if (components.day - currentComponents.day > 1) { // xx天xx小时
@@ -47,14 +47,18 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
             hours += 24;
             days --;
         }
-        return [NSString stringWithFormat:@"%ld天%ld小时", days, hours];
+        return [NSString stringWithFormat:@"还有 %ld天%ld小时", days, hours];
     }
     
     if (components.minute - currentComponents.minute >= 1) {
-        return [NSString stringWithFormat:@"%ld分钟", components.minute - currentComponents.minute];
+        return [NSString stringWithFormat:@"还有 %ld分钟", components.minute - currentComponents.minute];
     }
     
-    return [NSString stringWithFormat:@"%ld秒", components.second - currentComponents.second];
+    if (components.second - currentComponents.second >= 1) {
+        [NSString stringWithFormat:@"还有 %ld秒", components.second - currentComponents.second];
+    }
+    
+    return @"已经开始";
 }
 
 

@@ -64,26 +64,26 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     [self.colorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(20);
         make.top.offset(10);
-        make.centerY.offset(0);
         make.width.equalTo(@2);
-        make.bottom.offset(-10);
+        make.height.equalTo(self.stackView.mas_height);
     }];
     
     [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.colorView);
+        make.top.equalTo(self.colorView);
         make.left.equalTo(self.colorView.mas_right).offset(15);
         make.right.lessThanOrEqualTo(self).offset(-5);
+        make.bottom.equalTo(self.contentView).offset(-5);
     }];
 }
 
 - (void)setEvent:(EKEvent *)event
 {
-    [self mockDataForEvent:event];
+//    [self mockDataForEvent:event];
     
     _event = event;
     
     self.colorView.backgroundColor = [UIColor colorWithCGColor:event.calendar.CGColor];
-    self.leftTimeLabel.text = [NSString stringWithFormat:@"还有 %@", [event.startDate leftTimeSinceNow]];
+    self.leftTimeLabel.text = [NSString stringWithFormat:@"%@", [event.startDate leftTimeSinceNow]];
     self.titleLabel.text = event.title;
     self.locationLabel.text = event.location;
     self.durationLabel.text = [[NSDate date] durationUntilEndDate:event.startDate finalEndDate:event.endDate];

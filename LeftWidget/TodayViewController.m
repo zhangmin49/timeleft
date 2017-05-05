@@ -44,8 +44,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = [ZQTimeTableViewCell defaultHeight]; // 设置为一个接近“平均”行高的值
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = [ZQTimeTableViewCell defaultHeight]; // 设置为一个接近“平均”行高的值
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:ZQTimeTableViewCell.class forCellReuseIdentifier:NSStringFromClass(ZQTimeTableViewCell.class)];
     
@@ -92,11 +92,11 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [ZQTimeTableViewCell defaultHeight];
-//    return UITableViewAutomaticDimension;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [ZQTimeTableViewCell defaultHeight];
+////    return UITableViewAutomaticDimension;
+//}
 
 - (void)fetchRecentEvent
 {
