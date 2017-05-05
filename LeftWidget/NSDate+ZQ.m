@@ -127,6 +127,9 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
 
 - (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate currentTimeZone:(NSTimeZone *)timeZone endTimeZone:(NSTimeZone *)endTimeZone finalEndTimeZone:(NSTimeZone *)finalEndTimeZone
 {
+    if ([timeZone.name isEqualToString:endTimeZone.name] && [timeZone.name isEqualToString:finalEndTimeZone.name]) {
+        return @"";
+    }
     NSDateFormatter *localEndDateFormaterMD = MZSharedDateFormatter(@"MM月dd日");
     localEndDateFormaterMD.timeZone = endTimeZone;
     NSDateFormatter *localEndDateFormaterHM = MZSharedDateFormatter(@"hh:mm");
@@ -143,7 +146,7 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
     NSString *localEndDateString = endTimeZone ? [NSString stringWithFormat:@"%@", localEndDateHM] : @"";
     NSString *localFinalEndDateString = finalEndTimeZone ? [NSString stringWithFormat:@"%@", localFinalDateHM] : @"";
     
-    return [NSString stringWithFormat:@"[%@]%@-[%@]%@", [endTimeZone name], localEndDateString, [finalEndTimeZone name], localFinalEndDateString];
+    return [NSString stringWithFormat:@"[%@]%@-[%@]%@", [endTimeZone name] ?:@"默认时区", localEndDateString, [finalEndTimeZone name]?:@"默认时区", localFinalEndDateString];
 }
 
 @end

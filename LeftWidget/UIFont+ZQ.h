@@ -10,4 +10,5 @@
 
 @interface UIFont (ZQ)
 + (UIFont *)defaultFontWithSize:(CGFloat)fontSize;
++ (UIFont *)defaultBoldFontWithSize:(CGFloat)fontSize;
 @end

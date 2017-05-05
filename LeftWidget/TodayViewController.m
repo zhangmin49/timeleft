@@ -32,11 +32,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.preferredContentSize = CGSizeMake(0, 300);
 #ifdef __IPHONE_10_0 //因为是iOS10才有的，还请记得适配
     //如果需要折叠
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
 #endif
+    // 高度要在mode后设置
+    self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
+
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -65,7 +67,7 @@
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
         self.preferredContentSize = self.tableView.contentSize;
     } else {
-        self.preferredContentSize = CGSizeMake(0, 300);
+        self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
     }
 }
 

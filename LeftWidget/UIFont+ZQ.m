@@ -19,4 +19,13 @@
     return font;
 }
 
++ (UIFont *)defaultBoldFontWithSize:(CGFloat)fontSize
+{
+    
+    UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
+    
+    return font;
+}
+
+
 @end
