@@ -36,8 +36,6 @@
     //如果需要折叠
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
 #endif
-    // 高度要在mode后设置
-    self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
 
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -60,12 +58,14 @@
         }
     }];
     
+    //    // 高度要在mode后设置
+    self.preferredContentSize = CGSizeMake(0, 300);
 }
 
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
 {
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
-        self.preferredContentSize = self.tableView.contentSize;
+        self.preferredContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 10);
     } else {
         self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
     }

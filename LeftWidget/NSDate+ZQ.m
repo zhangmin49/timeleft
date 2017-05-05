@@ -39,7 +39,7 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
         return [NSString stringWithFormat:@"还有 %ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, ((NSUInteger)timeIntervalLeft % 3600) / 60];
     }
     
-    if (components.day - currentComponents.day > 1) { // xx天xx小时
+    if (components.day - currentComponents.day >= 1) { // xx天xx小时
         NSInteger days = components.day - currentComponents.day;
         
         NSInteger hours = components.hour - currentComponents.hour;

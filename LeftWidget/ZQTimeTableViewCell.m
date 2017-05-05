@@ -55,8 +55,8 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
 
 + (CGFloat)defaultHeight
 {
-    return 108;
-//    return 98;
+//    return 108;
+    return 98;
 }
 
 - (void)layoutUI
@@ -211,7 +211,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         
         _stackView.alignment = UIStackViewAlignmentLeading;
         _stackView.axis = UILayoutConstraintAxisVertical;
-//        _stackView.spacing = 2;
+        _stackView.spacing = 4;
         _stackView.distribution = UIStackViewDistributionFillEqually;
         
         [self.contentView addSubview:_stackView];
