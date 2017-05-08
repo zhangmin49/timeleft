@@ -125,9 +125,9 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     if (!_leftTimeLabel) {
         _leftTimeLabel = [[UILabel alloc] init];
         
-        _leftTimeLabel.textColor = RGB(54, 58, 56);
+        _leftTimeLabel.textColor =  RGB(43, 45, 54);
         
-        _leftTimeLabel.font = [UIFont defaultFontWithSize:10];
+        _leftTimeLabel.font = [UIFont defaultFontWithSize:14];
         
 //        [self.contentView addSubview:_leftTimeLabel];
   
@@ -141,7 +141,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _titleLabel = [[UILabel alloc] init];
         
         _titleLabel.textColor = RGB(0, 0, 0);
-        _titleLabel.font = [UIFont defaultFontWithSize:15];
+        _titleLabel.font = [UIFont defaultBoldFontWithSize:16];
         
 //        [self.contentView addSubview:_titleLabel];
     }
@@ -152,9 +152,9 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
 {
     if (!_locationLabel) {
         _locationLabel = [[UILabel alloc] init];
-        _locationLabel.textColor = RGB(54, 58, 56);
+        _locationLabel.textColor = RGB(43, 45, 54);
         
-        _locationLabel.font = [UIFont defaultFontWithSize:9];
+        _locationLabel.font = [UIFont defaultFontWithSize:14];
 
 //        [self.contentView addSubview:_locationLabel];
     }
@@ -167,7 +167,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _durationLabel = [[UILabel alloc] init];
         
         _durationLabel.textColor = RGB(43, 45, 54);
-        _durationLabel.font = [UIFont defaultFontWithSize:9];
+        _durationLabel.font = [UIFont defaultFontWithSize:14];
         
 //        [self.contentView addSubview:_durationLabel];
     }
@@ -180,7 +180,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _timeZoneDurationLabel = [[UILabel alloc] init];
         
         _timeZoneDurationLabel.textColor = RGB(43, 45, 54);
-        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:9];
+        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:14];
         _timeZoneDurationLabel.numberOfLines = 0;
         
         [self.timezoneView addSubview:_timeZoneDurationLabel];

@@ -92,6 +92,14 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    [[UIViewController sharedApplication] openURL:[NSURL URLWithString:@"calshow:"]];
+    NSTimeInterval timeInterval = [self.events[indexPath.row].startDate timeIntervalSinceReferenceDate];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"calshow:%lf", timeInterval]];
+    [self.extensionContext openURL:url completionHandler:nil];
+}
+
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return [ZQTimeTableViewCell defaultHeight];

@@ -14,7 +14,8 @@
 + (UIFont *)defaultFontWithSize:(CGFloat)fontSize
 {
 //    HYd4gj HYd1gj
-    UIFont *font = [UIFont fontWithName:@"HYd4gj" size:fontSize];
+//    UIFont *font = [UIFont fontWithName:@"HYd4gj" size:fontSize];
+    UIFont *font = [UIFont systemFontOfSize:fontSize];
     
     return font;
 }
