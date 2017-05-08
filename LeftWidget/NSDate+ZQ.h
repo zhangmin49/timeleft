@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (ZQ)
-- (NSString *)leftTimeSinceNow;
+//- (NSString *)leftTimeSinceDate:(NSDate *)date;
+- (NSString *)leftTimeSinceNowWithEndDate:(NSDate *)endDate;
 - (NSString *)beautyLocalFormat;
 - (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate;
 - (NSString *)durationUntilEndDate:(NSDate *)endDate finalEndDate:(NSDate *)finalEndDate currentTimeZone:(NSTimeZone *)timeZone endTimeZone:(NSTimeZone *)endTimeZone finalEndTimeZone:(NSTimeZone *)finalEndTimeZone;

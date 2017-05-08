@@ -83,7 +83,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     _event = event;
     
     self.colorView.backgroundColor = [UIColor colorWithCGColor:event.calendar.CGColor];
-    self.leftTimeLabel.text = [NSString stringWithFormat:@"%@", [event.startDate leftTimeSinceNow]];
+    self.leftTimeLabel.text = [NSString stringWithFormat:@"%@", [event.startDate leftTimeSinceNowWithEndDate:event.endDate]];
     self.titleLabel.text = event.title;
     self.locationLabel.text = event.location;
     self.durationLabel.text = [[NSDate date] durationUntilEndDate:event.startDate finalEndDate:event.endDate];

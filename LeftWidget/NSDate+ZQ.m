@@ -24,39 +24,79 @@ NSDateFormatter *MZSharedDateFormatter(NSString *dateFormat) {
 
 @implementation NSDate (ZQ)
 
-- (NSString *)leftTimeSinceNow
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSInteger units = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute;
-    NSDateComponents *components = [calendar components:units fromDate:self];
-    NSDateComponents *currentComponents = [calendar components:units fromDate:[NSDate date]];
+//- (NSString *)leftTimeSinceDate:(NSDate *)date
+//{
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    NSInteger units = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute;
+//    NSDateComponents *components = [calendar components:units fromDate:self];
+//    NSDateComponents *currentComponents = [calendar components:units fromDate:date];
+//    
+//    NSTimeInterval timeIntervalLeft = [self timeIntervalSinceDate:date];
+//    NSInteger days = ((NSInteger)timeIntervalLeft)/(3600*24);
+//    NSInteger hours = ((NSInteger)timeIntervalLeft)%(3600*24)/3600;
+//    NSInteger minutes = ((NSInteger)timeIntervalLeft)%(3600*24)%3600/60;
+//    NSInteger seconds = ((NSInteger)timeIntervalLeft)%(3600*24)%3600%60;
+//    
+//    if (days >= 1) { // xx天xx小时
+//        if (days == 0) {
+//            return [NSString stringWithFormat:@"%ld小时", hours];
+//        }
+//        return [NSString stringWithFormat:@"%ld天%ld小时", days, hours];
+//    }
+//    
+//    if (days < 1 && hours < 24 && hours >= 0) { // 1天内 24小时内
+//        if (hours == 0) {
+//            return [NSString stringWithFormat:@"%ld分钟", minutes];
+//        }
+//        return [NSString stringWithFormat:@"%ld小时%ld分钟", hours, minutes];
+//    }
+//    
+//   
+//    
+//    if (components.minute - currentComponents.minute >= 1) {
+//        return [NSString stringWithFormat:@"%ld分钟", components.minute - currentComponents.minute];
+//    }
+//    
+//    if (components.second - currentComponents.second >= 1) {
+//        return [NSString stringWithFormat:@"%ld秒", components.second - currentComponents.second];
+//    }
+//    
+//    return @"";
+//}
 
-    NSTimeInterval timeIntervalLeft = [self timeIntervalSinceDate:[NSDate date]];
-    if (timeIntervalLeft / 3600 < 24 && timeIntervalLeft / 3600 >= 0) { // 1天内 24小时内
-        if ((NSUInteger)timeIntervalLeft / 3600 == 0) {
-            return [NSString stringWithFormat:@"还有 %ld分钟", (NSUInteger)timeIntervalLeft / 60];
-        }
-        return [NSString stringWithFormat:@"还有 %ld小时%ld分钟", (NSUInteger)timeIntervalLeft / 3600, ((NSUInteger)timeIntervalLeft % 3600) / 60];
+- (NSString *)leftTimeSinceDate:(NSDate *)date
+{
+    //时间间隔
+    NSInteger intevalTime = [self timeIntervalSinceDate:date];
+    
+    //秒、分、小时、天、月、年
+    NSInteger minutes = intevalTime / 60;
+    NSInteger hours = intevalTime / 60 / 60;
+    NSInteger day = intevalTime / 60 / 60 / 24;
+    
+    if (intevalTime < 0) {
+        return @"";
     }
     
-    if (timeIntervalLeft / 3600 >= 24) { // xx天xx小时
-        NSInteger days = timeIntervalLeft / 3600 / 24;
-        NSInteger hours = (NSInteger)(timeIntervalLeft / 3600) % 24;
-        if (days == 0) {
-            return [NSString stringWithFormat:@"还有 %ld小时", hours];
-        }
-        return [NSString stringWithFormat:@"还有 %ld天%ld小时", days, hours];
+    if (minutes <= 1 && minutes > 0) {
+        return  [NSString stringWithFormat: @"%ld秒",(long)intevalTime];;
+    } else if (minutes < 60){
+        return [NSString stringWithFormat: @"%ld分钟",(long)minutes];
+    } else if (hours < 24){
+        return [NSString stringWithFormat: @"%ld小时%ld分钟",(long)hours, (long)minutes % 60];
+    } else {
+        return [NSString stringWithFormat: @"%ld天%ld小时",(long)day, (long)hours % 24];
     }
-    
-    if (components.minute - currentComponents.minute >= 1) {
-        return [NSString stringWithFormat:@"还有 %ld分钟", components.minute - currentComponents.minute];
+    return @"";
+}
+
+- (NSString *)leftTimeSinceNowWithEndDate:(NSDate *)endDate
+{
+    NSString *leftTime = [self leftTimeSinceDate:[NSDate date]];
+    if (leftTime.length == 0) {
+        return [NSString stringWithFormat:@"距离结束还有 %@", [endDate leftTimeSinceDate:[NSDate date]]];
     }
-    
-    if (components.second - currentComponents.second >= 1) {
-        [NSString stringWithFormat:@"还有 %ld秒", components.second - currentComponents.second];
-    }
-    
-    return @"已经开始";
+    return [NSString stringWithFormat:@"还有%@", leftTime];
 }
 
 
