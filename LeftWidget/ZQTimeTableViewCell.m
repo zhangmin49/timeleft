@@ -154,7 +154,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _locationLabel = [[UILabel alloc] init];
         _locationLabel.textColor = RGB(43, 45, 54);
         
-        _locationLabel.font = [UIFont defaultFontWithSize:14];
+        _locationLabel.font = [UIFont defaultFontWithSize:13];
 
 //        [self.contentView addSubview:_locationLabel];
     }
