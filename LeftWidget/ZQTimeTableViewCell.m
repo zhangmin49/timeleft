@@ -167,7 +167,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _durationLabel = [[UILabel alloc] init];
         
         _durationLabel.textColor = RGB(43, 45, 54);
-        _durationLabel.font = [UIFont defaultFontWithSize:14];
+        _durationLabel.font = [UIFont defaultFontWithSize:13];
         
 //        [self.contentView addSubview:_durationLabel];
     }
@@ -180,7 +180,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _timeZoneDurationLabel = [[UILabel alloc] init];
         
         _timeZoneDurationLabel.textColor = RGB(43, 45, 54);
-        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:14];
+        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:13];
         _timeZoneDurationLabel.numberOfLines = 0;
         
         [self.timezoneView addSubview:_timeZoneDurationLabel];

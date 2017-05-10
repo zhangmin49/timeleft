@@ -124,14 +124,15 @@
                                                      options:0];
     
     self.events = [self requestForEventUtilDate:twoDayFromNow];
-    if (self.events.count == 0) {
-        NSDate *oneHundredYearFromNow = [calendar dateByAddingComponents:oneHundredYear toDate:[NSDate date] options:0];
+    if (self.events.count < 2) {
+        NSDate *oneHundredYearFromNow = [calendar dateByAddingComponents:oneHundredYear toDate:twoHoursAgo options:0];
         NSArray *events = [self requestForEventUtilDate:oneHundredYearFromNow];
         NSMutableArray *tmp = [NSMutableArray array];
         for (NSInteger i = 0; i < MIN(2, events.count); ++i) {
             [tmp addObject:events[i]];
         }
         self.events = [tmp copy];
+        
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
