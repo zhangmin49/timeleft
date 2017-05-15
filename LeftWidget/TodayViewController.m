@@ -75,6 +75,7 @@
 {
 
     [super viewWillAppear:animated];
+
     
 }
 
@@ -138,7 +139,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         
-        self.preferredContentSize = self.tableView.contentSize;
+//        self.preferredContentSize = self.tableView.contentSize;
+        if (self.extensionContext.widgetActiveDisplayMode == NCWidgetDisplayModeExpanded) {
+            self.preferredContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 10);
+        } else {
+            self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
+        }
     });
 
 
@@ -188,6 +194,9 @@
             [self fetchRecentEvent];
             //            }] fire];
         }
+        
+        
+    
         
         completionHandler(NCUpdateResultNewData);
     }];
