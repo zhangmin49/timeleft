@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LeftWidget/ZQTimeTableViewCell.m"
-            timestampString = "515907460.919495"
+            timestampString = "516111207.999735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-setEvent:"
             landmarkType = "7">
          </BreakpointContent>

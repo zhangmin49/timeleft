@@ -48,15 +48,15 @@
     [self.tableView registerClass:ZQTimeTableViewCell.class forCellReuseIdentifier:NSStringFromClass(ZQTimeTableViewCell.class)];
     
     
-    @weakify(self);
-    [self.store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
-        @strongify(self);
-        if (granted) { //授权是否成功
-            //            [[NSTimer scheduledTimerWithTimeInterval:60 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self fetchRecentEvent];
-            //            }] fire];
-        }
-    }];
+//    @weakify(self);
+//    [self.store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+//        @strongify(self);
+//        if (granted) { //授权是否成功
+//            //            [[NSTimer scheduledTimerWithTimeInterval:60 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//            [self fetchRecentEvent];
+//            //            }] fire];
+//        }
+//    }];
     
     //    // 高度要在mode后设置
     self.preferredContentSize = CGSizeMake(0, 300);

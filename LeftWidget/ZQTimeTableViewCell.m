@@ -12,6 +12,9 @@
 #import "UIFont+ZQ.h"
 
 
+#define ZQNormalTextColor RGB(103, 103, 103)
+#define ZQTitleTextColor RGB(63, 63, 63)
+
 @interface ZQTimeTableViewCell ()
 
 @property (nonatomic, strong) UIView *colorView;
@@ -125,7 +128,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     if (!_leftTimeLabel) {
         _leftTimeLabel = [[UILabel alloc] init];
         
-        _leftTimeLabel.textColor =  RGB(43, 45, 54);
+        _leftTimeLabel.textColor =  ZQNormalTextColor;
         
         _leftTimeLabel.font = [UIFont defaultFontWithSize:14];
         
@@ -140,7 +143,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         
-        _titleLabel.textColor = RGB(0, 0, 0);
+        _titleLabel.textColor = ZQTitleTextColor;
         _titleLabel.font = [UIFont defaultBoldFontWithSize:16];
         
 //        [self.contentView addSubview:_titleLabel];
@@ -152,7 +155,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
 {
     if (!_locationLabel) {
         _locationLabel = [[UILabel alloc] init];
-        _locationLabel.textColor = RGB(43, 45, 54);
+        _locationLabel.textColor = ZQNormalTextColor;
         
         _locationLabel.font = [UIFont defaultFontWithSize:13];
 
@@ -166,7 +169,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     if (!_durationLabel) {
         _durationLabel = [[UILabel alloc] init];
         
-        _durationLabel.textColor = RGB(43, 45, 54);
+        _durationLabel.textColor = ZQNormalTextColor;
         _durationLabel.font = [UIFont defaultFontWithSize:13];
         
 //        [self.contentView addSubview:_durationLabel];
@@ -179,7 +182,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
     if (!_timeZoneDurationLabel) {
         _timeZoneDurationLabel = [[UILabel alloc] init];
         
-        _timeZoneDurationLabel.textColor = RGB(43, 45, 54);
+        _timeZoneDurationLabel.textColor = ZQNormalTextColor;
         _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:13];
         _timeZoneDurationLabel.numberOfLines = 0;
         
