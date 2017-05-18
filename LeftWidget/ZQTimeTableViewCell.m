@@ -13,7 +13,7 @@
 
 
 #define ZQNormalTextColor RGB(103, 103, 103)
-#define ZQTitleTextColor RGB(63, 63, 63)
+#define ZQTitleTextColor RGB(43, 43, 43)
 
 @interface ZQTimeTableViewCell ()
 
@@ -157,7 +157,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _locationLabel = [[UILabel alloc] init];
         _locationLabel.textColor = ZQNormalTextColor;
         
-        _locationLabel.font = [UIFont defaultFontWithSize:13];
+        _locationLabel.font = [UIFont defaultFontWithSize:12];
 
 //        [self.contentView addSubview:_locationLabel];
     }
@@ -170,7 +170,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _durationLabel = [[UILabel alloc] init];
         
         _durationLabel.textColor = ZQNormalTextColor;
-        _durationLabel.font = [UIFont defaultFontWithSize:13];
+        _durationLabel.font = [UIFont defaultFontWithSize:12];
         
 //        [self.contentView addSubview:_durationLabel];
     }
@@ -183,7 +183,7 @@ UIColor *RGBA(CGFloat r, CGFloat g, CGFloat b, CGFloat alpha) {
         _timeZoneDurationLabel = [[UILabel alloc] init];
         
         _timeZoneDurationLabel.textColor = ZQNormalTextColor;
-        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:13];
+        _timeZoneDurationLabel.font = [UIFont defaultFontWithSize:12];
         _timeZoneDurationLabel.numberOfLines = 0;
         
         [self.timezoneView addSubview:_timeZoneDurationLabel];
