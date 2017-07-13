@@ -59,16 +59,21 @@
 //    }];
     
     //    // 高度要在mode后设置
-    self.preferredContentSize = CGSizeMake(0, 300);
+    [UIView performWithoutAnimation:^{
+        self.preferredContentSize = CGSizeMake(0, 300);
+
+    }];
 }
 
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
 {
-    if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
-        self.preferredContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 10);
-    } else {
-        self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
-    }
+    [UIView performWithoutAnimation:^{
+        if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
+            self.preferredContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 10);
+        } else {
+            self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -137,14 +142,17 @@
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        
-//        self.preferredContentSize = self.tableView.contentSize;
-        if (self.extensionContext.widgetActiveDisplayMode == NCWidgetDisplayModeExpanded) {
-            self.preferredContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 10);
-        } else {
-            self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
-        }
+        [UIView performWithoutAnimation:^{
+
+            [self.tableView reloadData];
+            
+    //        self.preferredContentSize = self.tableView.contentSize;
+            if (self.extensionContext.widgetActiveDisplayMode == NCWidgetDisplayModeExpanded) {
+                self.preferredContentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height + 10);
+            } else {
+                self.preferredContentSize = CGSizeMake(0, [ZQTimeTableViewCell defaultHeight]);
+            }
+        }];
     });
 
 
